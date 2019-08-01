@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gong</title>
+
+    <style type="text/css">
+        .gonger {
+            --gong-size: 15rem;
+            --gong-color: #ff4b96;
+            --gong-shadow-color: #bc366e;
+
+            color: #fff;
+            background-color: var(--gong-color);
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 1.7rem;
+            width: var(--gong-size);
+            height: var(--gong-size);
+            line-height: var(--gong-size);
+            border-radius: 50%;
+            box-shadow: .15rem .15rem .3rem #ccc, 0 0 .3rem #ccc;
+            cursor: pointer;
+            user-select: none;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+        }
+
+        .gonger:active {
+            transform: translate(.15rem, .15rem);
+            box-shadow: inset .15rem .15rem .3rem var(--gong-shadow-color), inset 0 0 .3rem var(--gong-shadow-color);
+        }
+    </style>
+</head>
+
+<body>
+    <p>{{ .Text }}</p>
+    {{if .ShowGongButton}}
+        <div class="gonger"><span>gong</span></div>
+    {{end}}
+
+    <script type="text/javascript">
+        const gonger = document.querySelector(".gonger");
+        if (gonger) {
+            gonger.addEventListener("click", () => {
+                fetch("http://henrywoody.com:1337/gong", {method: "POST"});
+            });
+        }
+    </script>
+</body>
+</html>
