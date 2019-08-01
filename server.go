@@ -20,6 +20,9 @@ func init() {
 }
 
 func main() {
+
+    fmt.Println("Welcome to Gong, Carbon Edition.")
+
     if err := rpio.Open(); err != nil {
         fmt.Println(err)
         os.Exit(1)
@@ -60,7 +63,7 @@ func HandleGong(w http.ResponseWriter, r *http.Request) {
             isOkToGong,
         }
         w.Header().Set("Content-Type", "text/html")
-        tpl.ExecuteTemplate(w, "gong.gohtml", templateData)
+        tpl.ExecuteTemplate(w, "./gong.gohtml", templateData)
     }
 }
 
