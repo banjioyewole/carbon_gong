@@ -36,14 +36,14 @@
 <body>
     <p>{{ .Text }}</p>
     {{if .ShowGongButton}}
-        <div class="gonger"><span>gong</span></div>
+        <div class="gonger"><span>GONG</span></div>
     {{end}}
 
     <script type="text/javascript">
         const gonger = document.querySelector(".gonger");
         if (gonger) {
             gonger.addEventListener("click", () => {
-                fetch("http://henrywoody.com:1337/gong", {method: "POST"});
+                fetch("http://192.168.1.101:4664/gong", {method: "POST"});
             });
         }
     </script>
