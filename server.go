@@ -6,6 +6,7 @@ import (
     "github.com/stianeikeland/go-rpio"
     "os"
     "time"
+    "path/filepath"
 )
 
 var (
@@ -16,7 +17,16 @@ var (
 )
 
 func init() {
-    tpl = template.Must(template.ParseFiles("gong.gohtml"))
+
+ex, err := os.Executable()
+    if err != nil {
+        panic(err)
+    }
+    exPath := filepath.Dir(ex)
+    fmt.Println(exPath + "/gong.gohtml")
+    fmt.Println("BOO")
+
+  tpl = template.Must(template.ParseFiles( (exPath + "/gong.gohtml")))
 }
 
 func main() {
@@ -62,8 +72,16 @@ func HandleGong(w http.ResponseWriter, r *http.Request) {
             responseText,
             isOkToGong,
         }
+
+ex, err := os.Executable()
+    if err != nil {
+        panic(err)
+    }
+    exPath := filepath.Dir(ex)
+    fmt.Println(exPath)
+
         w.Header().Set("Content-Type", "text/html")
-        tpl.ExecuteTemplate(w, "./gong.gohtml", templateData)
+        tpl.ExecuteTemplate(w, ("gong.gohtml"), templateData)
     }
 }
 

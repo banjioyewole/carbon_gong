@@ -9,5 +9,7 @@ https://alexatnet.com/install-go-on-raspberry-pi/
 Lol, and this
 https://golang.org/doc/code.html
 
+I used `sudo /etc/rc.local start` to test the command we run on boot
+
 ## Because version control matters.
 https://github.com/banjioyewole/carbon_gong
