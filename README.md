@@ -3,7 +3,7 @@ Code Specific to the Gong inside Aurora.Boys 💎Home
 
 Contains the code for the web server and html served.
 
-I re-setup the gong in a newere wireless Rasperry Pi (Internally — Emerald Pi — with the help of this Medium article.
+I re-setup the gong in a new Rasperry Pi Zero W – Internally American Pi — with the help of this Medium article.
 https://alexatnet.com/install-go-on-raspberry-pi/
 
 Lol, and this
