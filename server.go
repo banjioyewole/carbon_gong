@@ -56,9 +56,8 @@ func SayHello(w http.ResponseWriter, r *http.Request) {
     w.Write([]byte(helloText))
 }
 
-func GongNow((w http.ResponseWriter, r *http.Request) {
+func GongNow(w http.ResponseWriter, r *http.Request) {
       timeMessage, isOkToGong := isTimeOk()
-      // if r.Method == http.MethodGet {
           if isOkToGong {
               go gong()
           }
