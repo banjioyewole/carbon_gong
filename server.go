@@ -41,9 +41,10 @@ func main() {
     defer rpio.Close()
 
     pin.Output()
-    
+
     http.HandleFunc("/", SayHello)
     http.HandleFunc("/gong", HandleGong)
+    http.HandleFunc("/gong_now", GongNow)
 
     if err := http.ListenAndServe(":4664", nil); err != nil {
         panic(err)
@@ -54,6 +55,15 @@ func SayHello(w http.ResponseWriter, r *http.Request) {
     helloText := "You've reached the GongServer."
     w.Write([]byte(helloText))
 }
+
+func GongNow((w http.ResponseWriter, r *http.Request) {
+      timeMessage, isOkToGong := isTimeOk()
+      // if r.Method == http.MethodGet {
+          if isOkToGong {
+              go gong()
+          }
+          w.WriteHeader(http.StatusNoContent) // to throw the bots off
+  }
 
 func HandleGong(w http.ResponseWriter, r *http.Request) {
     timeMessage, isOkToGong := isTimeOk()
@@ -111,4 +121,3 @@ func gong() {
         gonging = false
     }
 }
-
