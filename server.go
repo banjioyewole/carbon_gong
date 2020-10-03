@@ -57,7 +57,7 @@ func SayHello(w http.ResponseWriter, r *http.Request) {
 }
 
 func GongNow(w http.ResponseWriter, r *http.Request) {
-      timeMessage, isOkToGong := isTimeOk()
+      _ , isOkToGong := isTimeOk()
           if isOkToGong {
               go gong()
           }
